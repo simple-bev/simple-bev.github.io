@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A Simple Baseline for BEV Perception Without LiDAR</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      html,body,h1,h2,h3,h4,h5,h6 {font-family: "Titillium Web", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;}
+      <!-- .cite { background:#f0f0f0; padding:10px; font-size:18px} -->
+      .cite { padding:0px; background:#ffffff; font-size:18px}
+      .card {border: 1px solid #ccc}
+      img { margin-bottom:-6px;}
+      p { font-size:18px;}
+      a {text-decoration: none; color: #2196F3;}
+      .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+      box-shadow:
+      0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+      5px 5px 0 0px #fff, /* The second layer */
+      5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+      10px 10px 0 0px #fff, /* The third layer */
+      10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+      15px 15px 0 0px #fff, /* The fourth layer */
+      15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+      20px 20px 0 0px #fff, /* The fifth layer */
+      20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+      25px 25px 0 0px #fff, /* The fifth layer */
+      25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+      margin-left: 10px;
+      margin-right: 60px;
+      }
+    </style>
+  </head>  
+  <body class="w3-white">
+    <!-- Page Container -->
+    <div class="w3-content w3-margin-top w3-margin-bottom" style="max-width:960px;">
+
+      <!-- The Grid -->
+      <div class="w3-row-padding">
+
+	<!-- paper container -->	  
+	<div class="w3-display-container w3-row w3-white w3-margin-bottom">
+	  <div class="w3-center">
+	    <h1>A Simple Baseline for BEV Perception Without LiDAR</h1>
+	    <h5><a href="https://adamharley.com/">Adam W. Harley</a> &emsp;&emsp; <a href="https://zfang399.github.io/">Zhaoyuan Fang</a> &emsp;&emsp; <a href="https://www.tri.global/about-us/jie-li/">Jie Li</a> &emsp;&emsp; <a href="https://www.csc.kth.se/~raambrus/">Rares Ambrus</a> &emsp;&emsp; <a href="https://www.cs.cmu.edu/~katef/">Katerina Fragkiadaki</a></h5>
+	    <h5><em>arXiv 2022</em></h5>
+	  </div>
+	  <div class="w3-center">
+	    <h3>[<a href="https://github.com/aharley/bev_baseline">Code</a>] &emsp; [<a href="https://arxiv.org/abs/2206.07959">Paper</a>]</h3>
+	  </div>
+	  <hr>
+
+	  <!-- <table> -->
+	  <!--   <tr style="padding:0px"> -->
+	  <!--     <td style="width:100%;vertical-align:middle"> -->
+	  <!-- 	<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true"> -->
+	  <!-- 	  <source src="rad_output2.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos. -->
+	  <!-- 	</video> -->
+	  <!--     </td> -->
+	  <!--   </tr> -->
+	  <!-- </table> -->
+	  <div class="w3-display-container w3-row w3-white w3-margin-bottom w3-center">
+	    <!-- <img src="images/bev_vis.png" style="width:100%"> -->
+	    <video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+	      <source src="rad_output2_small.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+	    </video>
+	    
+	  </div>
+	  <hr>
+	  <div class="w3-center">
+	    <h2>Abstract</h2>
+	  </div>
+	  <p>Building 3D perception systems for autonomous vehicles that do not rely on LiDAR is a critical research problem because of the high expense of LiDAR systems compared to cameras and other sensors. Current methods use multi-view RGB data collected from cameras around the vehicle and neurally ``lift'' features from the perspective images to the 2D ground plane, yielding a ``bird's eye view'' (BEV) feature representation of the 3D space around the vehicle. Recent research focuses on the way the features are lifted from images to the BEV plane. We instead propose a simple baseline model, where the ``lifting'' step simply averages features from all projected image locations, and find that it outperforms the current state-of-the-art in BEV vehicle segmentation. Our ablations show that batch size, data augmentation, and input resolution play a large part in performance. Additionally, we reconsider the utility of radar input, which has previously been either ignored or found non-helpful by recent works. With a simple RGB-radar fusion module, we obtain a sizable boost in performance, approaching the accuracy of a LiDAR-enabled system. <hr>
+
+	  <!--
+	  <div class="w3-center">
+	    <h2>Video</h2>
+	  </div>
+	  <div class="w3-display-container w3-row w3-white w3-margin-bottom w3-center">
+	    <iframe width="800" height="600" src="https://www.youtube.com/embed/Jg2f5fkgxZo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	  </div>
+	  <hr>
+	  -->
+
+	  
+	  
+	  <!-- <div class="w3-display-container w3-row w3-white w3-margin-bottom w3-center"> -->
+	  <!--   <iframe width="800" height="600" src="https://www.youtube.com/embed/Jg2f5fkgxZo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+	  <!-- </div> -->
+	  <hr>
+	  
+
+	  <div class="w3-row w3-margin" style="padding-bottom:2em">
+	    <div class="w3-center"><h2>Paper</h2></div>
+	    <div class="w3-col s0 m1 l2" style="height:10px"></div>
+	    <div class="w3-col s6 m3 l2">
+	      <a href="https://arxiv.org/pdf/2206.07959.pdf"><img class="layered-paper-big" src="images/page1.png" style="width:100%;min-height:200px; margin-right:3em"></a>
+	    </div>
+	    <div class="w3-col s6 m7 l6" style="padding-left:5em">
+	      <div class="cite">
+		Adam W. Harley, Zhaoyuan Fang, Jie Li, Rares Ambrus, Katerina Fragkiadaki.
+		<i>A Simple Baseline for BEV Perception Without LiDAR.</i> 
+		arXiv 2022.
+	      </div>
+	      <h3><a href="https://arxiv.org/pdf/2206.07959.pdf">[pdf]</a>&emsp;<a href="bib.txt">[bibtex]</a></h3>
+	    </div>
+	    <div class="w3-col s0 m1 l2" style="height:10px"></div>
+	  </div>
+	  <hr>
+	  
+	  <!-- end paper container -->
+
+	</div><!-- End Grid -->
+      </div><!-- End Page Container -->
+
+  </body>
+</html>
