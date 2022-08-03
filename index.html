@@ -63,7 +63,7 @@
 	  <div class="w3-center">
 	    <h2>Abstract</h2>
 	  </div>
-	  <p>Building 3D perception systems for autonomous vehicles that do not rely on LiDAR is a critical research problem because of the high expense of LiDAR systems compared to cameras and other sensors. Current methods use multi-view RGB data collected from cameras around the vehicle and neurally "lift" features from the perspective images to the 2D ground plane, yielding a "bird's eye view" (BEV) feature representation of the 3D space around the vehicle. Recent research focuses on the way the features are lifted from images to the BEV plane. We instead propose a simple baseline model, where the "lifting" step simply averages features from all projected image locations, and find that it outperforms the current state-of-the-art in BEV vehicle segmentation. Our ablations show that batch size, data augmentation, and input resolution play a large part in performance. Additionally, we reconsider the utility of radar input, which has previously been either ignored or found non-helpful by recent works. With a simple RGB-radar fusion module, we obtain a sizable boost in performance, approaching the accuracy of a LiDAR-enabled system. <hr>
+	  <p>Building 3D perception systems for autonomous vehicles that do not rely on LiDAR is a critical research problem because of the high expense of LiDAR systems compared to cameras and other sensors. Current methods use multi-view RGB data collected from cameras around the vehicle and neurally "lift" features from the perspective images to the 2D ground plane, yielding a "bird's eye view" (BEV) feature representation of the 3D space around the vehicle. Recent research focuses on the way the features are lifted from images to the BEV plane. We instead propose a simple baseline model, where the "lifting" step simply averages features from all projected image locations, and find that it outperforms the current state-of-the-art in BEV vehicle segmentation. Our ablations show that batch size, data augmentation, and input resolution play a large part in performance. Additionally, we reconsider the utility of radar input, which has previously been either ignored or found non-helpful by recent works. With a simple RGB-radar fusion module, we obtain a sizable boost in performance, approaching the accuracy of a LiDAR-enabled system.
 
 	  <!--
 	  <div class="w3-center">
@@ -80,6 +80,67 @@
 	  <!-- <div class="w3-display-container w3-row w3-white w3-margin-bottom w3-center"> -->
 	  <!--   <iframe width="800" height="600" src="https://www.youtube.com/embed/Jg2f5fkgxZo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 	  <!-- </div> -->
+	  <hr>
+	  <div class="w3-row w3-margin" style="padding-bottom:2em">
+	  	<div class="w3-center"><h2>Comparison of 2D-to-BEV modules</h2></div>
+		  <p>There have been many works on BEV perception, and most of them share the overall pipeline: extracting image features from multi-view images, lifting them from the 2D image planes to the BEV plane, and predicting the BEV segmentation with another network.</p>
+		  <table>
+		    <tr style="padding:0px">
+		      <td style="width:100%;vertical-align:middle">
+			<img src="images/2dtobev_general.jpg" style="width:100%">
+		      </td>
+		    </tr>
+		  </table>
+
+		  <p>Recent works have focused on innovating new techniques for this 2D-to-BEV “lifting”step. For example [1] uses MLPs to convert a vertical strip of image features into a flat strip of bird’s eye view features, by first reducing the vertical dimension of the image and then expanding along the depth dimension in the overhead view.</p>
+		  <table>
+		    <tr style="padding:0px">
+		      <td style="width:100%;vertical-align:middle">
+			<img src="images/2dtobev_roddick.jpg" style="width:100%">
+		      </td>
+		    </tr>
+		  </table>
+		  <center>[1] T. Roddick and R. Cipolla. Predicting semantic map representations from images using pyramid occupancy networks. CVPR 2020</center>
+
+		  <p>Philion <em> et al. </em> [2] estimates a distribution over depth for each pixel, and use this to place each feature softly along the ray in the 3D volume.</p>
+		  <table>
+		    <tr style="padding:0px">
+		      <td style="width:100%;vertical-align:middle">
+			<img src="images/2dtobev_philion.jpg" style="width:100%">
+		      </td>
+		    </tr>
+		  </table>
+		  <center>[2] J. Philion and S. Fidler. Lift, splat, shoot: Encoding images from arbitrary camera rigs by implicitly unprojecting to 3d. ECCV 2020.</center>
+
+		  <p>With the recent advances in transformers, some methods have started incorporating transformers in the 2D-to-BEV module. For example, [3] lets the BEV flat strips attend into the vertical image scanlines to perform more flexible translation from the image plane to the BEV plane.</p>
+		  <table>
+		    <tr style="padding:0px">
+		      <td style="width:100%;vertical-align:middle">
+			<img src="images/2dtobev_saha.jpg" style="width:100%">
+		      </td>
+		    </tr>
+		  </table>
+		  <center>[3] A. Saha, O. M. Maldonado, C. Russell, and R. Bowden. Translating images into maps. ICRA 2022</center>
+
+		  <p> [4], concurrent with our work, uses a learnable deformable attention to let 3D features attend into 2D image features to inject more representation power into the model.</p>
+		  <table>
+		    <tr style="padding:0px">
+		      <td style="width:100%;vertical-align:middle">
+			<img src="images/2dtobev_li.jpg" style="width:100%">
+		      </td>
+		    </tr>
+		  </table>
+		  <center>[4] Z. Li, W. Wang, H. Li, E. Xie, C. Sima, T. Lu, Q. Yu, and J. Dai. Bevformer: Learning bird’seye-view representation from multi-camera images via spatiotemporal transformers. ECCV 2022</center>
+
+		  <p>In contrast, in our proposed “baseline” method, we take a simple parameter-free bilinear sampling approach. For each voxel in the 3D volume, we project its 3D coordinates into the image feature maps, and bilinearly sample from the projected 2D locations. If a voxel lands in the image planes of multiple views, we simply take an average of the sampled features.</p>
+		  <table>
+		    <tr style="padding:0px">
+		      <td style="width:100%;vertical-align:middle">
+			<img src="images/2dtobev_ours.jpg" style="width:100%">
+		      </td>
+		    </tr>
+		  </table>
+
 	  <hr>
 	  
 
