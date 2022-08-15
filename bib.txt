@@ -1,0 +1,6 @@
+@inproceedings{harley2022simple,
+author = {Adam W. Harley and Zhaoyuan Fang and Jie Li and Rares Ambrus and Katerina Fragkiadaki},
+title = {A Simple Baseline for BEV Perception Without LiDAR},
+booktitle = {arXiv:2206.07959},
+year = {2022}
+}
