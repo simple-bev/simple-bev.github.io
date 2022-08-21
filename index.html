@@ -124,8 +124,8 @@
 	    In our proposed baseline model, 
 	    we take a parameter-free approach, 
 	    which is: we take the 3D coordinate of a voxel,
-	    project it into the image feature map, and bilinearly sample there.
-	    other aspects of our model, in terms of the 2D and BEV CNNs, are similar to related work.
+	    project it into the image feature map, and bilinearly sample there. 
+	    Other aspects of our model, in terms of the 2D and BEV CNNs, are similar to related work.
 	  </p>
 
 	  <table class="w3-table">
@@ -177,21 +177,25 @@
 	  </div>
 	  <p>Please see the paper for quantitative results and analysis. Here, we show video visualizations of the performance.</p>
 	  <div class="w3-center">
-	    <div class="w3-display-container w3-row w3-white w3-margin-bottom w3-center">
-	      <!-- <img src="images/bev_vis.png" style="width:100%"> -->
-	      <video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
-		<source src="videos/rgb_output_compressed.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
-	      </video>
-	      RGB-only model.
+	    <div class="w3-card w3-padding">
+	      <h4>RGB-only model</h4>
+	      <div class="w3-display-container w3-row w3-white w3-margin-bottom w3-center">
+		<!-- <img src="images/bev_vis.png" style="width:100%"> -->
+		<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+		  <source src="videos/rgb_output_compressed.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+		</video>
+	      </div>
 	    </div>
-
-	    <div class="w3-display-container w3-row w3-white w3-margin-bottom w3-center">
-	      <!-- <img src="images/bev_vis.png" style="width:100%"> -->
-	      <video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
-		<source src="videos/rad_output2_small.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
-	      </video>
-	      RGB+radar model.
-	    </div>
+	    <br />
+	    <div class="w3-card w3-padding">
+	      <h4>RGB+radar model</h4>
+	      <div class="w3-display-container w3-row w3-white w3-margin-bottom w3-center">
+		<!-- <img src="images/bev_vis.png" style="width:100%"> -->
+		<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+		  <source src="videos/rad_output2_small.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+		</video>
+	      </div>
+	      </div>
 	  </div>
 	  <p>A clear avenue for future work is to integrate information across time, so that the predictions are less sensitive to momentary occlusions.</p>
 	  
