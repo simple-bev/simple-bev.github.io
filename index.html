@@ -177,23 +177,27 @@
 	  </div>
 	  <p>Please see the paper for quantitative results and analysis. Here, we show video visualizations of the performance.</p>
 	  <div class="w3-center">
-	    <div class="w3-card w3-padding">
-	      <h4>RGB-only model</h4>
+	    <div class="w3-card">
+	      <!-- <div class="w3-padding"><h4>RGB-only model</h4></div> -->
 	      <div class="w3-display-container w3-row w3-white w3-margin-bottom w3-center">
+		<h4>RGB-only model</h4>
 		<!-- <img src="images/bev_vis.png" style="width:100%"> -->
 		<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
 		  <source src="videos/rgb_output_compressed.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
 		</video>
+		<p>Top-left: our predictions. Top-right: ground truth. Bottom half: camera input.</p>
 	      </div>
 	    </div>
 	    <br />
-	    <div class="w3-card w3-padding">
-	      <h4>RGB+radar model</h4>
+	    <div class="w3-card">
+	      <!-- <h4>RGB+radar model</h4> -->
 	      <div class="w3-display-container w3-row w3-white w3-margin-bottom w3-center">
+		<h4>RGB+radar model</h4>
 		<!-- <img src="images/bev_vis.png" style="width:100%"> -->
 		<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
 		  <source src="videos/rad_output2_small.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
 		</video>
+		<p>Top row (in order): LiDAR (for reference), radar (input), our predictions, ground truth. Bottom half: camera input.</p>
 	      </div>
 	      </div>
 	  </div>
