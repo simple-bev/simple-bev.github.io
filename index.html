@@ -32,6 +32,21 @@
       margin-left: 10px;
       margin-right: 60px;
       }
+      .videoWrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      /* 16:9 */
+      padding-top: 25px;
+      height: 0;
+      }
+      .videoWrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      }
+      
     </style>
   </head>  
   <body class="w3-white">
@@ -59,8 +74,9 @@
 	  
 	  <div class="w3-display-container w3-row w3-white w3-margin-bottom w3-center">
 	    <!-- <h4>5 minute overview</h4> -->
-	    <iframe width="720" height="405" src="https://www.youtube.com/embed/OFE3tUiobPA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	    
-	    <!-- <img src="images/bev_vis.png" style="width:100%"> -->
+	    <div class="videoWrapper">
+	      <iframe width="560" height="349" src="https://www.youtube.com/embed/OFE3tUiobPA" frameborder="0" allowfullscreen></iframe>
+	    </div>
 	  </div>
 	  <hr>
 	  
